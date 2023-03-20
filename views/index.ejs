@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apple OR Android???</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+  </head>
+  <body>
+    <h1 id="title">
+      <span style="color: #1982fc">Apple</span> or
+      <span style="color: #43cc47">Android</span>???
+    </h1>
+    <div id="counter">
+      <h2>
+        <span id="isWinning"> <%- votes.winning %> </span>
+      </h2>
+      <h3>
+        Apple:
+        <span id="option1Voters"> <%- votes.option1Voters %> </span>
+      </h3>
+      <h3>
+        Android:
+        <span id="option2Voters"> <%- votes.option2Voters %> </span>
+      </h3>
+    </div>
+
+    <% if (loggedIn) { %>
+    <div id="vote-container">
+      <div id="vote">
+        <% if (userAlreadyVoted) { %>
+        <h3>You've already voted!</h3>
+        <% } else { %>
+        <h2>Vote:</h2>
+        <h3>You can only vote once!</h3>
+        <div id="options">
+          <div id="option1Btn">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/1200px-Apple_logo_grey.svg.png"
+              alt="apple"
+            />
+          </div>
+          <div id="option2Btn">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/511px-Android_robot.svg.png"
+              alt="android"
+            />
+          </div>
+        </div>
+        <h3 id="loading"></h3>
+        <% } %>
+      </div>
+    </div>
+    <% } else { %>
+    <div id="login">
+      <h2>Please login to vote.</h2>
+      <button onclick="LoginWithReplit();">Login</button>
+      <p id="login-description">
+        The only reason why you need to log in is to prevent people from
+        spam-clicking votes. Your username will be encrypted in the database and
+        therefore will remain hidden to the public.
+      </p>
+    </div>
+    <% } %>
+
+    <div id="data">
+      <details>
+        <summary>View a data visualization</summary>
+        <div id="wrapper">
+          <div id="y">
+            <span id="starty">0</span>
+            <span id="texty">Votes</span>
+            <span id="endy">...</span>
+          </div>
+          <canvas id="canvas" width="500" height="500"></canvas>
+          <div id="block"></div>
+          <div id="x">
+            <span id="startx">0</span>
+            <span id="textx">Users</span>
+            <span id="endx">...</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
